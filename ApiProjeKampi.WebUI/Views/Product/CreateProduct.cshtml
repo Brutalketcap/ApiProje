@@ -1,0 +1,42 @@
+﻿@model ApiProjeKampi.WebUI.Dtos.ProductDto.CreateProductDto
+@{
+    ViewData["Title"] = "CreateProduct";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+<section class="section">
+    <div class="section-body">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Yeni Ürün Sayfası</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <labe>Ürün Adi</labe>
+                            <input type="text" asp-for="ProductName" class="form-control" />
+                            <br>
+                            <label>Ürün Fiyarı</label>
+                            <input type="text" asp-for="Price" class="form-control" />
+                            <br>
+                            <label>Ürün Kategorisi</label>
+                            <select type="text" asp-for="CategoryId" asp-items="(IEnumerable<SelectListItem>)ViewBag.v">
+                                <option value="">-- Kategori Seçiniz-- </option>
+                            </select>
+                            <br>
+                            <label>Ürün Görsel Url</label>
+                            <input type="text" asp-for="ImageUrl" class="form-control" />
+                            <br>
+                            <label>Ürün Açıklaması</label>
+                            <textarea class="form-control" asp-for="ProductDescription" rows="5"></textarea>
+                            <br>
+                            <button class="btn-primary">Ürünü Oluştur</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

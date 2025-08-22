@@ -1,0 +1,30 @@
+﻿@model ApiProjeKampi.WebUI.Dtos.FeatureDto.UpdateFeatureDto
+@{
+    ViewData["Title"] = "UpdateFeature";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="section">
+    <div class="section-body">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Kategor Güncelleme Sayfası</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <input type="hidden" asp-for="FeatureID">
+                            <labe>Kategori Adi</labe>
+                            <input type="text" asp-for="Title" class="form-control" />
+                            <br>
+                            <button class="btn-succes">Kategoriyi Düzenle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
