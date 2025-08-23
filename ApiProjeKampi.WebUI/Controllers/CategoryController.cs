@@ -22,8 +22,8 @@ namespace ApiProjeKampi.WebUI.Controllers
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonDate = await responseMessage.Content.ReadAsStringAsync();
-                var vaules = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonDate);
-                return View(vaules);
+                var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonDate);
+                return View(values);
             }
             return View();
         }
@@ -70,7 +70,7 @@ namespace ApiProjeKampi.WebUI.Controllers
         {
             var client = _httpClientFactory.CreateClient();
             var jsonDate= JsonConvert.SerializeObject(updateCategoryDto);
-            StringContent stringContent = new StringContent(jsonDate, Encoding.UTF8,"aplication/json" );
+            StringContent stringContent = new StringContent(jsonDate, Encoding.UTF8,"application/json"); 
             await client.PutAsync("https://localhost:7041/api/Categories", stringContent);
             return RedirectToAction("CategoryList");
         }

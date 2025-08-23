@@ -1,6 +1,6 @@
-﻿@model List<ApiProjeKampi.WebUI.Dtos.FeatureDto.ResultFeatureDto>
+﻿@model List<ApiProjeKampi.WebUI.Dtos.AboutDtos.ResultAboutDto>
 @{
-    ViewData["Title"] = "FeatureList";
+    ViewData["Title"] = "AboutList";
     Layout = "~/Views/AdminLayout/Index.cshtml";
     int count = 0;
 }
@@ -11,19 +11,18 @@
             <div class="col-12 col-md-12 col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Öne Çıkan alan İşlemler</h4>
+                        <h4>Hakkinda Sayfasi Listesi</h4>
                     </div>
-
                     <div class="card-body">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
                                     <th scope="col">Başlık</th>
-                                    <th scope="col">Alt Başlık</th>
                                     <th scope="col">Açıklama</th>
+                                    <th scope="col">Resim Url</th>
+                                    <th scope="col">Video Url(Embed Olarak)</th>
                                     <th scope="col">Video Url</th>
-                                    <th scope="col">Görsel Url</th>
+                                    <th scope="col">Reservasyon Numarası</th>
                                     <th scope="col">Sil</th>
                                     <th scope="col">Güncelle</th>
                                 </tr>
@@ -31,27 +30,28 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    count++;
+                                    count++;                                 
                                     <tr>
-                                        <th scope="row">@count</th>
                                         <td>@item.Title</td>
-                                        <td>@item.SubTitle</td>
                                         <td>@item.Description</td>
-                                        <td>@item.VideoUrl</td>
+                                        <td>@item.VidoeCoverImageUrl</td>
                                         <td>@item.ImageUrl</td>
-                                        <td><a href="/Feature/DeleteFeature/@item.FeatureID" class="btn btn-danger">Sil</a></td>
-                                        <td><a href="/Feature/UpdateFeature/@item.FeatureID" class="btn btn-success">Güncelle</a></td>
+                                        <td>@item.VideoUrl</td>
+                                        <td>@item.ReservationNumber</td>
+                                        <td><a href="/About/DeleteAbout/@item.AboutId" class="btn btn-danger">Sil</a></td>
+                                        <td><a href="/About/UpdateAbout/@item.AboutId" class="btn btn-success">Güncelle</a></td>
                                     </tr>
                                 }
                             </tbody>
                         </table>
-                        @if (Model.Count == 1)
+                        
+                        @if(@count==1)
                         {
-                            <a href="#" class="btn btn-info">Feature Mevcut</a>
+                        <a href="#" class="btn btn-info"> Mevcut hakkında </a>
                         }
                         else
                         {
-                            <a href="/Feature/CreateFeature/" class="btn btn-info">Yeni Feature Girişi</a>
+                        <a href="/About/CreateAbout/" class="btn btn-info">Yeni hakkında Girişi</a>
                         }
                     </div>
                 </div>
