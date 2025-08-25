@@ -1,11 +1,12 @@
 ﻿using ApiProjeKampi.WebUI.Dtos.ServiceDto;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Net.Http;
 
 namespace ApiProjeKampi.WebUI.Viewcomponents
 {
-    public class _ServiceDefaultCopmonentPartial: ViewComponent
+    public class _ServiceDefaultCopmonentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
@@ -22,14 +23,14 @@ namespace ApiProjeKampi.WebUI.Viewcomponents
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultServiceDto>>(jsonData);
+
                 return View(values);
             }
-                return View();
+            return View();
         }
     }
-    
+
 }
 
 
-    
-   
+

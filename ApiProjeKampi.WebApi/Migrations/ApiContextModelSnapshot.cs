@@ -56,7 +56,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("AboutId");
 
-                    b.ToTable("Abouts");
+                    b.ToTable("Abouts", (string)null);
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Category", b =>
@@ -73,7 +73,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("CategoryID");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Chef", b =>
@@ -102,7 +102,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("ChefId");
 
-                    b.ToTable("Chefs");
+                    b.ToTable("Chefs", (string)null);
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Contact", b =>
@@ -135,7 +135,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("ContactId");
 
-                    b.ToTable("Contacts");
+                    b.ToTable("Contacts", (string)null);
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Feature", b =>
@@ -168,7 +168,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("FeatureID");
 
-                    b.ToTable("Features");
+                    b.ToTable("Features", (string)null);
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Image", b =>
@@ -189,7 +189,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("ImageId");
 
-                    b.ToTable("Images");
+                    b.ToTable("Images", (string)null);
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Message", b =>
@@ -224,7 +224,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("MessageId");
 
-                    b.ToTable("Messages");
+                    b.ToTable("Messages", (string)null);
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Notification", b =>
@@ -251,7 +251,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("NotificationId");
 
-                    b.ToTable("Notifications");
+                    b.ToTable("Notifications", (string)null);
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Product", b =>
@@ -284,7 +284,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Reservation", b =>
@@ -327,7 +327,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("ReservationId");
 
-                    b.ToTable("Reservations");
+                    b.ToTable("Reservations", (string)null);
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Service", b =>
@@ -352,7 +352,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("ServiceID");
 
-                    b.ToTable("Services");
+                    b.ToTable("Services", (string)null);
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Testimonial", b =>
@@ -381,7 +381,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("TestimonialId");
 
-                    b.ToTable("Testimonials");
+                    b.ToTable("Testimonials", (string)null);
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.YummyEvent", b =>
@@ -412,7 +412,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("YummyEventId");
 
-                    b.ToTable("YummyEvents");
+                    b.ToTable("YummyEvents", (string)null);
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Product", b =>
