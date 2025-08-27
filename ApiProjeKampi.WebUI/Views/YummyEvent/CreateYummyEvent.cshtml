@@ -1,0 +1,39 @@
+﻿@model ApiProjeKampi.WebUI.Dtos.YummyEventDto.CreatYummeyEventDto
+@{
+    ViewData["Title"] = "CreateYummyEvent";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="section">
+    <div class="section-body">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Yeni Organizasyon Ekleme Sayfası</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <labe>Organizasyon Başlığı</labe>
+                            <input type="text" asp-for="Title" class="form-control" />
+                            <br>
+                            <labe>Organizasyon Açıklaması</labe>
+                            <input type="text" asp-for="Description" class="form-control" />
+                            <br>
+                            <labe>Organizasyon Fiyatı</labe>
+                            <input type="text" asp-for="Price" class="form-control" />
+                            <br>
+                            <labe>Organizasyon Görsel (Url)</labe>
+                            <input type="text" asp-for="ImageUrl" class="form-control" />
+                            <br>
+                            <button class="btn-primary">Organizasyon Oluştur</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

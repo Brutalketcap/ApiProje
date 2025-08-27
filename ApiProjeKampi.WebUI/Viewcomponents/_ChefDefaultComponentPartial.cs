@@ -1,4 +1,4 @@
-﻿using ApiProjeKampi.WebUI.Dtos.ChefsDto;
+﻿using ApiProjeKampi.WebUI.Dtos.ChefDto;
 using ApiProjeKampi.WebUI.Viewcomponents;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;

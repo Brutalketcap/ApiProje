@@ -42,8 +42,8 @@ namespace ApiProjeKampi.WebApi.Controllers
             return Ok("Etkinlik Silme işlemi başarılı");
         }
 
-        [HttpGet("GetService")]
-        public IActionResult GetService(int id)
+        [HttpGet("GetYummyEvent")]
+        public IActionResult GetYummyEvent(int id)
         {
             var value = _context.YummyEvents.Find(id);
 
