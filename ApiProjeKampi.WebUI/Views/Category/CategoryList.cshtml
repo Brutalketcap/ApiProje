@@ -20,8 +20,8 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Kategori Adı</th>
-                                    <th scope="col">Sil</th>
                                     <th scope="col">Güncelle</th>
+                                    <th scope="col">Sil</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -31,8 +31,8 @@
                                     <tr>
                                         <th scope="row">@count</th>
                                         <td>@item.CategoryName</td>
-                                        <td><a href="/Category/DeleteCatory/@item.CategoryID" class="btn btn-danger">Sil</a></td>
                                         <td><a href="/Category/UpdateCatory/@item.CategoryID" class="btn btn-success">Güncelle</a></td>
+                                        <td><a href="/Category/DeleteCatory/@item.CategoryID" class="btn btn-danger">Sil</a></td>
                                     </tr>
                                 }
                             </tbody>

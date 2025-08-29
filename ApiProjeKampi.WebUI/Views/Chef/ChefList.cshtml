@@ -22,8 +22,8 @@
                                     <th scope="col">Şef Adı</th>
                                     <th scope="col">Başlık</th>
                                     <th scope="col"> Açıklama</th>
-                                    <th scope="col">Sil</th>
                                     <th scope="col">Güncelle</th>
+                                    <th scope="col">Sil</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,8 +35,8 @@
                                         <td>@item.NameSurname</td>
                                         <td>@item.Title</td>
                                         <td>@item.Description</td>
-                                        <td><a href="/Chef/DeleteChef/@item.ChefId" class="btn btn-danger">Sil</a></td>
                                         <td><a href="/Chef/UpdateChef/@item.ChefId" class="btn btn-success">Güncelle</a></td>
+                                        <td><a href="/Chef/DeleteChef/@item.ChefId" class="btn btn-danger">Sil</a></td>
                                     </tr>
                                 }
                             </tbody>

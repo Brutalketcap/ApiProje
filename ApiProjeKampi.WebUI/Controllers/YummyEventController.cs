@@ -33,7 +33,7 @@ namespace ApiProjeKampi.WebUI.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateYummyEvent(CreatYummeyEventDto creatYummeyEventDto)
+        public async Task<IActionResult> CreateYummyEvent(CreateYummeyEventDto creatYummeyEventDto)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(creatYummeyEventDto);

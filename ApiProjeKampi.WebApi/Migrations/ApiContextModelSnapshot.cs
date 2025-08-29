@@ -56,7 +56,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("AboutId");
 
-                    b.ToTable("Abouts", (string)null);
+                    b.ToTable("Abouts");
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Category", b =>
@@ -73,7 +73,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("CategoryID");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Chef", b =>
@@ -102,7 +102,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("ChefId");
 
-                    b.ToTable("Chefs", (string)null);
+                    b.ToTable("Chefs");
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Contact", b =>
@@ -135,7 +135,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("ContactId");
 
-                    b.ToTable("Contacts", (string)null);
+                    b.ToTable("Contacts");
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Feature", b =>
@@ -168,7 +168,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("FeatureID");
 
-                    b.ToTable("Features", (string)null);
+                    b.ToTable("Features");
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Image", b =>
@@ -189,7 +189,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("ImageId");
 
-                    b.ToTable("Images", (string)null);
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Message", b =>
@@ -224,7 +224,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("MessageId");
 
-                    b.ToTable("Messages", (string)null);
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Notification", b =>
@@ -251,7 +251,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("NotificationId");
 
-                    b.ToTable("Notifications", (string)null);
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Product", b =>
@@ -284,7 +284,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Reservation", b =>
@@ -298,11 +298,11 @@ namespace ApiProjeKampi.WebApi.Migrations
                     b.Property<int>("CountofPeople")
                         .HasColumnType("int");
 
-                    b.Property<string>("Emali")
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Massage")
+                    b.Property<string>("Message")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -327,7 +327,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("ReservationId");
 
-                    b.ToTable("Reservations", (string)null);
+                    b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Service", b =>
@@ -352,7 +352,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("ServiceID");
 
-                    b.ToTable("Services", (string)null);
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Testimonial", b =>
@@ -381,7 +381,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("TestimonialId");
 
-                    b.ToTable("Testimonials", (string)null);
+                    b.ToTable("Testimonials");
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.YummyEvent", b =>
@@ -412,7 +412,7 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     b.HasKey("YummyEventId");
 
-                    b.ToTable("YummyEvents", (string)null);
+                    b.ToTable("YummyEvents");
                 });
 
             modelBuilder.Entity("ApiProjeKampi.WebApi.Entities.Product", b =>

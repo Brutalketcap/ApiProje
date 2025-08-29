@@ -21,8 +21,8 @@
                                     <th scope="col">Müşteri Adı</th>
                                     <th scope="col">Müşteri Ünvanı</th>
                                     <th scope="col">Müşteri Yorumu</th>
-                                    <th scope="col">Sil</th>
                                     <th scope="col">Güncelle</th>
+                                    <th scope="col">Sil</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,8 +34,8 @@
                                         <td>@item.nameSurname</td>
                                         <td>@item.title</td>
                                         <td>@item.comment</td>
-                                        <td><a href="/Testimonial/DeleteTestimonial/@item.TestimonialId" class="btn btn-danger">Sil</a></td>
                                         <td><a href="/Testimonial/UpdateTestimonial/@item.TestimonialId" class="btn btn-success">Güncelle</a></td>
+                                        <td><a href="/Testimonial/DeleteTestimonial/@item.TestimonialId" class="btn btn-danger">Sil</a></td>
                                     </tr>
                                 }
                             </tbody>

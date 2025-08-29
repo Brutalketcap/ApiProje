@@ -23,8 +23,8 @@
                                     <th scope="col">Video Url(Embed Olarak)</th>
                                     <th scope="col">Video Url</th>
                                     <th scope="col">Reservasyon Numarası</th>
-                                    <th scope="col">Sil</th>
                                     <th scope="col">Güncelle</th>
+                                    <th scope="col">Sil</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,8 +38,8 @@
                                         <td>@item.ImageUrl</td>
                                         <td>@item.VideoUrl</td>
                                         <td>@item.ReservationNumber</td>
-                                        <td><a href="/About/DeleteAbout/@item.AboutId" class="btn btn-danger">Sil</a></td>
                                         <td><a href="/About/UpdateAbout/@item.AboutId" class="btn btn-success">Güncelle</a></td>
+                                        <td><a href="/About/DeleteAbout/@item.AboutId" class="btn btn-danger">Sil</a></td>
                                     </tr>
                                 }
                             </tbody>
@@ -47,7 +47,7 @@
                         
                         @if(@count==1)
                         {
-                        <a href="#" class="btn btn-info"> Mevcut hakkında </a>
+                            <a href="#" class="btn btn-info">Hakkında Mevcut</a>
                         }
                         else
                         {

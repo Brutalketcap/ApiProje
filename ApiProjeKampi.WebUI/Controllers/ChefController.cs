@@ -33,7 +33,7 @@ namespace ApiProjeKampi.WebUI.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateChef(CreatChefDto creatChefDto)
+        public async Task<IActionResult> CreateChef(CreateChefDto creatChefDto)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(creatChefDto);

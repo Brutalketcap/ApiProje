@@ -1,0 +1,37 @@
+﻿@model ApiProjeKampi.WebUI.Dtos.MessageDto.GetMessageByIdDto
+@{
+    ViewData["Title"] = "UpdateMessage";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="section">
+    <div class="section-body">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Mesaj Düzenleme Sayfası</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <input type="hidden" asp-for="MessageId" />
+                            <labe>Gönderici Ad Soyad</labe>
+                            <input type="text" asp-for="NameSurname" class="form-control" />
+                            <br>
+                            <labe>Gönderici Email</labe>
+                            <input type="text" asp-for="Email" class="form-control" />
+                            <br>
+                            <labe>Mesaj Konusu</labe>
+                            <input type="text" asp-for="Subject" class="form-control" />
+                            <br>
+                            <labe>Mesaj İçeriği</labe>
+                            <input type="text" asp-for="MessageDetails" class="form-control" />
+                            <br>
+                            <button class="btn-succes">Mesajı Oluştur</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -12,7 +12,6 @@ namespace ApiProjeKampi.WebUI.Controllers
         public CategoryController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
-
         }
 
         public async Task<IActionResult> CategoryList()

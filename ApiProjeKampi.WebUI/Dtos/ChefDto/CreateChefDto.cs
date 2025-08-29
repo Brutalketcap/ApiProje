@@ -1,6 +1,6 @@
 ﻿namespace ApiProjeKampi.WebUI.Dtos.ChefDto
 {
-    public class CreatChefDto
+    public class CreateChefDto
     {
         public string NameSurname { get; set; }
         public string Title { get; set; }
