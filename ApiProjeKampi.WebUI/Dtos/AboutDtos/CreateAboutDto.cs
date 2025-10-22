@@ -1,6 +1,6 @@
 ﻿namespace ApiProjeKampi.WebUI.Dtos.AboutDtos
 {
-    public class CreateWyChooseYummyDto
+    public class CreateAboutDto
     {
         public string Title { get; set; }
         public string ImageUrl { get; set; }

@@ -56,19 +56,19 @@ namespace ApiProjeKampi.WebApi.Controllers
         [HttpPut]
         public IActionResult UpdateMessage(UpdateMessageDto updateMessageDto)
         {
-            var value = _mapper.Map<Message>(updateMessageDto); 
+            var value = _mapper.Map<Message>(updateMessageDto);
             _context.Messages.Update(value);
             _context.SaveChanges();
             return Ok("me");
         }
 
         [HttpGet("MessageListByReadFalse")]
-        public IActionResult MessageListByReadFalse() 
+        public IActionResult MessageListByReadFalse()
         {
-            var value = _context.Messages.Where(x=> x.IsRead == false).ToList();
+            var value = _context.Messages.Where(x => x.IsRead == false).ToList();
 
             return Ok(value);
         }
-    
+
     }
 }

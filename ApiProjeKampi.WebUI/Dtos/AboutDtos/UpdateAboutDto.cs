@@ -1,6 +1,6 @@
 ﻿namespace ApiProjeKampi.WebUI.Dtos.AboutDtos
 {
-    public class UpdateWyChooseYummyDto
+    public class UpdateAboutDto
     {
         public int AboutId { get; set; }
         public string Title { get; set; }

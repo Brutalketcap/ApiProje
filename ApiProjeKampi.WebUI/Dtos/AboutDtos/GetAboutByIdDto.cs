@@ -1,6 +1,6 @@
 ﻿namespace ApiProjeKampi.WebUI.Dtos.AboutDtos
 {
-    public class GetWyChooseYummyByIdDto
+    public class GetAboutByIdDto
     {
         public int AboutId { get; set; }
         public string Title { get; set; }

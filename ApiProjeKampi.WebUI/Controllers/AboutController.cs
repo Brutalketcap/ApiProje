@@ -21,7 +21,7 @@ namespace ApiProjeKampi.WebUI.Controllers
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultWyChooseYummyDto>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultAboutDto>>(jsonData);
                 return View(values);
             }
             return View();
@@ -32,7 +32,7 @@ namespace ApiProjeKampi.WebUI.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateAbout(CreateWyChooseYummyDto createAboutDto)
+        public async Task<IActionResult> CreateAbout(CreateAboutDto createAboutDto)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createAboutDto);
@@ -60,12 +60,12 @@ namespace ApiProjeKampi.WebUI.Controllers
             var responseMessage = await client.GetAsync("https://localhost:7041/api/Abouts/GetAboutById?id=" + id);
         
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<GetWyChooseYummyByIdDto>(jsonData);
+            var values = JsonConvert.DeserializeObject<GetAboutByIdDto>(jsonData);
 
             return View(values);
         }
         [HttpPost]
-        public async Task<IActionResult> UpdateAbout(UpdateWyChooseYummyDto updateAboutDto)
+        public async Task<IActionResult> UpdateAbout(UpdateAboutDto updateAboutDto)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateAboutDto);

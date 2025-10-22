@@ -1,9 +1,9 @@
 ﻿@model ApiProjeKampi.WebUI.Dtos.ProductDto.UpdateProductDto
+
 @{
     ViewData["Title"] = "UpdateProduct";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
-
 <section class="section">
     <div class="section-body">
         <div class="row">
@@ -18,7 +18,10 @@
                             <labe>Ürün Adi</labe>
                             <input type="text" asp-for="ProductName" class="form-control" />
                             <br>
-                            <labe>Ürün Adi</labe>
+                            <labe>Ürün Resimi</labe>
+                            <input type="text" asp-for="ImageUrl" class="form-control" />
+                            <br>
+                            <labe>Ürün Fiyati</labe>
                             <input type="text" asp-for="Price" class="form-control" />
                             <br>
                             <button class="btn-succes">Kategoriyi Düzenle</button>

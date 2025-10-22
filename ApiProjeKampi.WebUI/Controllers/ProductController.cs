@@ -1,8 +1,11 @@
 ﻿using ApiProjeKampi.WebUI.Dtos.CategoryDtos;
 using ApiProjeKampi.WebUI.Dtos.ProductDto;
+using Humanizer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Net.Http;
 using System.Text;
 
 namespace ApiProjeKampi.WebUI.Controllers
@@ -64,32 +67,37 @@ namespace ApiProjeKampi.WebUI.Controllers
             return View();
         }
 
-        public async Task<IActionResult> DeleteCatory(int id)
+        public async Task<IActionResult> DeleteProduct(int id) 
         {
             var client = _httpClientFactory.CreateClient();
-            await client.DeleteAsync("https://localhost:7041/api/Products?id=" + id); /////////////////////////////////////////////
-
+            await client.DeleteAsync("https://localhost:7041/api/Products?id=" + id); 
             return RedirectToAction("ProductList");
         }
+
         [HttpGet]
         public async Task<IActionResult> UpdateProduct(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMassage = await client.GetAsync("https://localhost:7041/api/Products/GetProducts?id=" + id);
-            var jsonDate = await responseMassage.Content.ReadAsStringAsync();
-            var value = JsonConvert.DeserializeObject<GetProductByIdDto>(jsonDate);
-            return View(value);
+            var responseMessage = await client.GetAsync($"https://localhost:7041/api/Products/GetProduct?id={id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var value = JsonConvert.DeserializeObject<GetProductByIdDto>(jsonData);
+                return View(value);
+            }
+
+            return View();
         }
-        [HttpPost]
+
+    [HttpPost]
         public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonDate = JsonConvert.SerializeObject(updateProductDto);
-            StringContent stringContent = new StringContent(jsonDate, Encoding.UTF8, "aplication/json");
+            StringContent stringContent = new StringContent(jsonDate, Encoding.UTF8, "application/json");
             await client.PutAsync("https://localhost:7041/api/Products", stringContent);
             return RedirectToAction("ProductList");
         }
 
-
     }
-}
+} 

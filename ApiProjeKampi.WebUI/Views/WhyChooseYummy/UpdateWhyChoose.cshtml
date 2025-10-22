@@ -1,4 +1,4 @@
-﻿@model ApiProjeKampi.WebUI.Dtos.WyChooseYummyDto.GetWyChooseYummyByIdDto
+﻿@model ApiProjeKampi.WebUI.Dtos.WyChooseYummyDto.GetWhyChooseYummyByIdDto
 @{
     ViewData["Title"] = "UpdateWhyChoose";
     Layout = "~/Views/AdminLayout/Index.cshtml";
@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <input type="hidden" asp-for="ServiceID">
+                            <input type="hidden" asp-for="ServiceId">
                             <labe>Başlık</labe>
                             <input type="text" asp-for="Title" class="form-control" />
                             <br>
