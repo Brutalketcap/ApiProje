@@ -44,7 +44,7 @@ namespace ApiProjeKampi.WebUI.Controllers
             var responseMassage = await client.PostAsync("https://localhost:7041/api/Features", stringContent);
             if (responseMassage.IsSuccessStatusCode)
             {
-                return RedirectToAction("FeatureList"); 
+                return RedirectToAction("FeatureList");
             }
             return View();
         }
@@ -52,7 +52,7 @@ namespace ApiProjeKampi.WebUI.Controllers
         public async Task<IActionResult> DeleteFeature(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            await client.DeleteAsync("https://localhost:7041/api/Features?id=" + id); 
+            await client.DeleteAsync("https://localhost:7041/api/Features?id=" + id);
 
             return RedirectToAction("FeatureList");
         }
@@ -62,7 +62,7 @@ namespace ApiProjeKampi.WebUI.Controllers
             var client = _httpClientFactory.CreateClient();
             var responseMassage = await client.GetAsync("https://localhost:7041/api/Features/GetFeature?id=" + id);
             var jsonDate = await responseMassage.Content.ReadAsStringAsync();
-            var value = JsonConvert.DeserializeObject<GetProductByIdDto>(jsonDate);
+            var value = JsonConvert.DeserializeObject<GetFeatureByIdDto>(jsonDate);
             return View(value);
         }
         [HttpPost]
@@ -70,9 +70,10 @@ namespace ApiProjeKampi.WebUI.Controllers
         {
             var client = _httpClientFactory.CreateClient();
             var jsonDate = JsonConvert.SerializeObject(updateFeatureDto);
-            StringContent stringContent = new StringContent(jsonDate, Encoding.UTF8, "aplication/json");
+            StringContent stringContent = new StringContent(jsonDate, Encoding.UTF8, "application/json");
             await client.PutAsync("https://localhost:7041/api/Features", stringContent);
-            return RedirectToAction("ProductList");
+            return RedirectToAction("FeatureList");
         }
     }
+
 }

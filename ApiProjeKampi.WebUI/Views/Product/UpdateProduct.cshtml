@@ -1,4 +1,4 @@
-﻿@model ApiProjeKampi.WebUI.Dtos.ProductDto.UpdateProductDto
+﻿@model ApiProjeKampi.WebUI.Dtos.ProductDto.GetProductByIdDto
 
 @{
     ViewData["Title"] = "UpdateProduct";
@@ -14,10 +14,15 @@
                     </div>
                     <div class="card-body">
                         <form method="post">
-                            <input type="hidden" asp-for="ProductId">
+                            <input type="hidden" asp-for="ProductId" />
+                            <input type="hidden" asp-for="ProductDescription" />
                             <labe>Ürün Adi</labe>
                             <input type="text" asp-for="ProductName" class="form-control" />
                             <br>
+                            <label>Ürün Kategorisi</label>
+                            <select type="text" asp-for="CategoryId" asp-items="(IEnumerable<SelectListItem>)ViewBag.v" class="form-control">
+                                <option value="">-Kategori seçiniz</option>
+                            </select>
                             <labe>Ürün Resimi</labe>
                             <input type="text" asp-for="ImageUrl" class="form-control" />
                             <br>
@@ -32,3 +37,7 @@
         </div>
     </div>
 </section>
+
+
+
+

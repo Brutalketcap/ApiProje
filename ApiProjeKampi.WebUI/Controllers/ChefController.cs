@@ -1,6 +1,7 @@
 ﻿using ApiProjeKampi.WebUI.Dtos.ChefDto;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Net.Http;
 using System.Text;
 
 namespace ApiProjeKampi.WebUI.Controllers
@@ -14,11 +15,10 @@ namespace ApiProjeKampi.WebUI.Controllers
             _httpClientFactory = httpClientFactory;
 
         }
-
         public async Task<IActionResult> ChefList()
         {
             var clinet = _httpClientFactory.CreateClient();
-            var responseMessage = await clinet.GetAsync("https://localhost:7041/api/Chefs"); 
+            var responseMessage = await clinet.GetAsync("https://localhost:7041/api/Chefs");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonDate = await responseMessage.Content.ReadAsStringAsync();
@@ -27,11 +27,13 @@ namespace ApiProjeKampi.WebUI.Controllers
             }
             return View();
         }
+
         [HttpGet]
-        public IActionResult CreateChef()
+        public async Task<IActionResult> CreateChef()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateChef(CreateChefDto creatChefDto)
         {
@@ -57,13 +59,14 @@ namespace ApiProjeKampi.WebUI.Controllers
         public async Task<IActionResult> UpdateChef(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMassage = await client.GetAsync("https://localhost:7041/api/Chefs/GetChef?id=" + id); 
+            var responseMassage = await client.GetAsync("https://localhost:7041/api/Chefs/GetChef?id=" + id);
+
             var jsonDate = await responseMassage.Content.ReadAsStringAsync();
             var value = JsonConvert.DeserializeObject<GetCheftByIdDto>(jsonDate);
             return View(value);
         }
         [HttpPost]
-        public async Task<IActionResult> UpdateChef(UpdateCheftDto updateCheftDto)
+        public async Task<IActionResult> UpdateChef( UpdateCheftDto updateCheftDto)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonDate = JsonConvert.SerializeObject(updateCheftDto);
@@ -73,3 +76,5 @@ namespace ApiProjeKampi.WebUI.Controllers
         }
     }
 }
+ 
+ 

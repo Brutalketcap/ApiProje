@@ -57,11 +57,12 @@ namespace ApiProjeKampi.WebApi.Controllers
         [HttpPut]
         public IActionResult UpdateReservation(UpdateReservationDto updateReservationDto)
         {
-            var value = _context.Reservations.Find(updateReservationDto);
+            var value = _mapper.Map<Reservation>(updateReservationDto);
             _context.Reservations.Update(value);
             _context.SaveChanges();
             return Ok("Rezervasyon Güncelleme İşlemi Başarılı");
         }
+       
 
         [HttpGet("GetTotalReservationCount")]
         public IActionResult GetTotalReservationCount()
@@ -121,10 +122,7 @@ namespace ApiProjeKampi.WebApi.Controllers
             }).ToList();
 
             return Ok(result);
-
         }
-
-
 
     }
 }
