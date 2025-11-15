@@ -10,4 +10,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.18" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\imgas\chafs\" />
+    <Folder Include="wwwroot\imgas\events\" />
+    <Folder Include="wwwroot\imgas\testimonialimages\" />
+  </ItemGroup>
+
 </Project>

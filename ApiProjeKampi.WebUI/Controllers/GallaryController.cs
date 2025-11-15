@@ -1,4 +1,5 @@
-﻿using ApiProjeKampi.WebUI.Dtos.ImagesDto;
+﻿using ApiProjeKampi.WebUI.Dtos.ChefDto;
+using ApiProjeKampi.WebUI.Dtos.ImagesDto;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -27,58 +28,74 @@ namespace ApiProjeKampi.WebUI.Controllers
             return View();
         }
 
-        [HttpGet]
+        public async Task<IActionResult> ImageListWhitEdit()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:7041/api/Images");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonDate = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultImageDto>>(jsonDate);
+                return View(values);
+            }
+            return View();
+        }
+
+
+        //----------------------------------------------
+
+
+
+
+
+
+
+
         public IActionResult CreateImage()
         {
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> CreateImage(CreateImageDto createImageDto)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createImageDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7041/api/Images", stringContent);
+            StringContent StringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PostAsync("https://localhost:7041/api/Images", StringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("ImageList");
+                //SerializeObject ve DeserializeObject ne olduğunu ve StringContent "application/json RedirectToAction bak
+
+
+                return RedirectToAction("ImageListWhitEdit");
             }
             return View();
         }
 
-        [HttpDelete]
         public async Task<IActionResult> DeleteImage(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync("https://localhost:7041/api/Images/GetImageById?id=" + id);
+            await client.DeleteAsync("https://localhost:7041/api/Images?id=" + id);
 
             return RedirectToAction("ImageList");
         }
-
         [HttpGet]
         public async Task<IActionResult> UpdateImage(int id)
-        { 
+        {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7041/api/Images/GetImageById?id="+id);
-            var jsonsData = await responseMessage.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<GetImageByIdDto>(jsonsData);
-            return View(values);
+            var responseMassage = await client.GetAsync("https://localhost:7041/api/Images/GetImageById?id=" + id);
+            var jsonDate = await responseMassage.Content.ReadAsStringAsync();
+            var value = JsonConvert.DeserializeObject<GetImageByIdDto>(jsonDate);
+            return View(value);
         }
-
         [HttpPost]
         public async Task<IActionResult> UpdateImage(UpdateImageDto updateImageDto)
         {
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updateImageDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7041/api/Images",stringContent);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("ImageList");
-            }
-            return View();
-
+            var jsonDate = JsonConvert.SerializeObject(updateImageDto);
+            StringContent stringContent = new StringContent(jsonDate, Encoding.UTF8, "application/json");
+            await client.PutAsync("https://localhost:7041/api/Images", stringContent);
+            return RedirectToAction("ImageListWhitEdit");
         }
 
     }

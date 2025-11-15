@@ -33,20 +33,6 @@ namespace ApiProjeKampi.WebUI.Controllers
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreatReservation(CreateReservationDto createReservationDto)
-        {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createReservationDto);
-            StringContent stringcontent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMassage = await client.PostAsync("https://localhost:7041/api/Reservations", stringcontent);
-            if (responseMassage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("ReservationLis");
-            }
-
-            return View();
-        }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteReservation(int id)
