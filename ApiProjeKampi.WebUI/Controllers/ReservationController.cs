@@ -32,6 +32,15 @@ namespace ApiProjeKampi.WebUI.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> CreatReservation(CreateReservationDto createReservationDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonDate = JsonConvert.SerializeObject(createReservationDto);
+            StringContent stringContent = new StringContent(jsonDate, Encoding.UTF8, "application/json");
+            var responseMassage = client.PostAsync("https://localhost:7041/api/Reservations", stringContent);
+            return View();
+        }
 
 
         [HttpDelete]

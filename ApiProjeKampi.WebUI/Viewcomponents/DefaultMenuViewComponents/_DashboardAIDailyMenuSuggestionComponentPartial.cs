@@ -1,8 +1,11 @@
-﻿using ApiProjeKampi.WebUI.Dtos.ProductDto;
+﻿using ApiProjeKampi.WebUI.Dtos.AIDailyMenuSuggestionDtos;
+using ApiProjeKampi.WebUI.Dtos.ProductDto;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Diagnostics.Metrics;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 
 namespace ApiProjeKampi.WebUI.Viewcomponents.DefaultMenuViewComponents
@@ -10,14 +13,14 @@ namespace ApiProjeKampi.WebUI.Viewcomponents.DefaultMenuViewComponents
     public class _DashboardAIDailyMenuSuggestionComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly string OpenAIKey = "";
+        private readonly string OpenAIKey ="";
         public _DashboardAIDailyMenuSuggestionComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
 
         }
 
-        public async Task<IViewComponentResult> Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
 
             var openAiClient = _httpClientFactory.CreateClient();
@@ -26,31 +29,34 @@ namespace ApiProjeKampi.WebUI.Viewcomponents.DefaultMenuViewComponents
                 new AuthenticationHeaderValue("Bearer", OpenAIKey);
 
             string prompt = @"
-Aşağıdaki formatta rastgele 4 farklı dünya mutfağından (ör: Çin, İtalyan, Türk, Hint, Japon, Fransız, Meksika...) 
-her biri için günlük bir menü oluştur.
+                 4 farklı dünya mutfağından tamamen rastgele günlük menü oluştur.
+                    
+                    ÖNEMLİ KURALLAR:
+                    - Mutlaka 4 FARKLI ülke mutfağı seç.
+                    - Daha önce seçtiğin mutfakları tekrar etme (iç mantığında çeşitlilik üret).
+                    - Popüler olmayan mutfaklardan da seçebilirsin (örneğin Peru, Tayland, Fas, İran, Kore, Şili, Portekiz, Endonezya, Lübnan vb.).
+                    - Ülkeleri HER SEFERİNDE FARKLI seç.
+                    - Tüm içerik TÜRKÇE olacak.
+                    - Ülke adını Türkçe yaz (ör: “Peru Mutfağı”).
+                    - ISO Country Code zorunlu (ör: PE, TH, MA, IR, KR vb.)
+                    - Örnek vermiyorum, tamamen özgün üret.
+                    - Cevap sadece geçerli JSON olsun.
+                    
+                    JSON formatı:
+                    [
+                      {
+                        ""Cuisine"": ""X Mutfağı"",
+                        ""CountryCode"": ""XX"",
+                        ""MenuTitle"": ""Günlük Menü"",
+                        ""Items"": [
+                          { ""Name"": ""Yemek 1"", ""Description"": ""Açıklama"", ""Price"": 100 },
+                          { ""Name"": ""Yemek 2"", ""Description"": ""Açıklama"", ""Price"": 120 },
+                          { ""Name"": ""Yemek 3"", ""Description"": ""Açıklama"", ""Price"": 90 },
+                          { ""Name"": ""Yemek 4"", ""Description"": ""Açıklama"", ""Price"": 70 }
+                    ]
+                      }
+            ]";
 
-Kurallar:
-- 4 farklı ülke mutfağı olacak.
-- Ülkeleri rastgele seç.
-- Her mutfağın içinde 4 yemek olsun (çorba, ana yemek, yan yemek, tatlı gibi).
-- Her yemeğe kısa bir açıklama ve fiyat önerisi ekle.
-- Cevap sadece geçerli bir JSON olsun, ek açıklama verme.
-
-JSON formatı tam olarak şöyle olsun:
-
-[
-  {
-    ""Cuisine"": ""Italian"",
-    ""MenuTitle"": ""Authentic Italian Daily Menu"",
-    ""Items"": [
-      { ""Name"": ""Soup Name"", ""Description"": ""..."", ""Price"": 10 },
-      { ""Name"": ""Main Dish"", ""Description"": ""..."", ""Price"": 20 },
-      { ""Name"": ""Side Dish"", ""Description"": ""..."", ""Price"": 8 },
-      { ""Name"": ""Dessert"", ""Description"": ""..."", ""Price"": 7 }
-    ]
-  }
-]
-";
 
             var body = new
             {
@@ -84,6 +90,9 @@ JSON formatı tam olarak şöyle olsun:
 
             return View(menus);
         }
+
     }
+
+
 }
-}
+

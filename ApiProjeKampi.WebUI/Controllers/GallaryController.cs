@@ -44,13 +44,6 @@ namespace ApiProjeKampi.WebUI.Controllers
 
         //----------------------------------------------
 
-
-
-
-
-
-
-
         public IActionResult CreateImage()
         {
             return View();
